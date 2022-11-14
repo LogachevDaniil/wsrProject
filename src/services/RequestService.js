@@ -3,7 +3,7 @@ import abi from "./abi.json";
 
 class RequestService {
     web3 = new Web3("http://127.0.0.1:8545/");
-    Contract = new this.web3.eth.Contract(abi,"0xA7c8B0D74b68EF10511F27e97c379FB1651e1eD2"); //адресс контракта
+    Contract = new this.web3.eth.Contract(abi,"0x5FbDB2315678afecb367f032d93F642f64180aa3"); //адресс контракта
 
     async register(_login, _fullName, _pass, _address){
         try{
@@ -31,7 +31,6 @@ class RequestService {
         // }
     }
 
-    as
 
     async AddAdmin(newAddress, address){
         return await this.Contract.methods.addAdmin(newAddress).send({from:address})
@@ -47,7 +46,18 @@ class RequestService {
 
     async Shopsi(address){
         return await this.Contract.methods.shopsi().call({from:address})
+    }
 
+    
+    async requestRaise(shopAddress, address){
+        return await this.Contract.methods.reqRiseList(shopAddress).send({from:address})
+    }
+    
+    async riseList(address){
+        return await this.Contract.methods.riseList().call({from:address})
+    }
+    async addSellers(bool, id, address){
+        return await this.Contract.methods.addSellers(bool, id).send({from:address})
     }
 }
 export default new RequestService();
@@ -67,5 +77,6 @@ export default new RequestService();
 //     address shop8 = 0xFABB0ac9d68B0B445fB7357272Ff202C5651694a;
 //     address shop9 = 0x1CBd3b2770909D4e10f157cABC84C7264073C9Ec;
 
+// 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199 для всего
 
 // https://github.com/LogachevDaniil/wsrProject.git   

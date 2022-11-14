@@ -8,10 +8,11 @@ import RequestService from "../services/RequestService";
 import { ProviderContext } from "../Context/ProviderContext";
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ShopsTable from '../Components/ShopsTable';
 
 const Authtorization = () => {
 
-    const { Authtorization, SellersDetails, Shopsi } = useContext(ProviderContext);
+    const { Authtorization, SellersDetails, ShopsiMass } = useContext(ProviderContext);
     const navigate = useNavigate();
 
     const [pass, setPass] = useState("");
@@ -25,7 +26,7 @@ const Authtorization = () => {
 
         let data = await RequestService.authAcc(login, pass, address);
         Authtorization(data.login, data.fullName, data.wallet, data.balance, data.role);
-
+        
 
         console.log(data);
 
@@ -33,11 +34,11 @@ const Authtorization = () => {
             let dataSeller = await RequestService.sellersDetails(address);
             SellersDetails(dataSeller.sity, dataSeller.Shop);
             console.log(dataSeller);
-            let dataShops = await RequestService.shopsi(address);
-            Shopsi(dataShops);
-            console.log(dataShops);
-
         }
+        else if (data.role === "5") {
+            <ShopsTable />
+        }
+        
 
         navigate("/HelloPage");
 

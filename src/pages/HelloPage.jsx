@@ -4,10 +4,14 @@ import { ProviderContext } from "../Context/ProviderContext";
 import AddAdmin from "../Components/AddAdmin";
 import RegShop from "../Components/RegShop";
 import DeleteShop from "../Components/DeleteShop";
-
+import ShopTable from "../Components/ShopsTable";
+import RequesRaise from "../Components/RequestRaise";
+import { useState } from "react";
+import RiseList from "../Components/RiseList";
 const HelloPage = () => {
 
     const { userData, sellerData } = useContext(ProviderContext);
+    const [address, setAddress] = useState("")
 
     const roles = {
         1: "Buyer",
@@ -32,8 +36,7 @@ const HelloPage = () => {
                             Ваш адресс: {userData._wallet}
                             <br />
                             Ваш баланс: {userData._balance / 10 ** 18} Ether
-                            {/* <AddSeller /> */}
-                            {/* <BuyerRequestRaise/> */}
+                            <RequesRaise />
                         </p>
                     </div>
                 ) : (userData._role == 2) ? (
@@ -57,7 +60,6 @@ const HelloPage = () => {
                             <br />
                             Ваш билайн!
                             Живи на яркой стороне!
-                            {/* <AddSeller /> */}
                         </p>
                     </div>)
 
@@ -77,7 +79,8 @@ const HelloPage = () => {
                                 <AddAdmin />
                                 <RegShop />
                                 <DeleteShop />
-                                {/* <AddSeller /> */}
+                                <ShopTable address={userData._wallet}/>
+                                <RiseList address={userData._wallet}/>
                             </p>
                         </div>)
                         : (userData._role == 6) ? (

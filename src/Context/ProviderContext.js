@@ -20,7 +20,6 @@ export const ProviderContextWrapper = ({children}) => {
 
     const [userData, setUserData] = useState(initUserValues);
     const [sellerData, setSellerData] = useState(initSellerValues);
-    const [dataShops, setDataShops] = useState(initShopValues);
 
     const Authtorization = (_login, _fullName, _wallet, _balance, _role) => {
         setUserData({
@@ -38,17 +37,17 @@ export const ProviderContextWrapper = ({children}) => {
             _shop
         })
     }
-
+    
     // const 
     
-        console.log(sellerData);
     
     const providerValue = {
         Authtorization,
         SellersDetails,
         userData,
-        sellerData
+        sellerData,
     };
+
 
     return (
         <ProviderContext.Provider value={providerValue}>
