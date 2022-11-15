@@ -22,7 +22,7 @@ const ShopsTable = ({address}) => {
         <tr>
           <th>id</th>
           <th>Город</th>
-          <th>Адресс кошелька</th>
+          <th>Адрес кошелька</th>
           <th>многа деняк</th>
         </tr>
       </thead>

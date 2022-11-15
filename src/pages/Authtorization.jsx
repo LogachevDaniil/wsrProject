@@ -25,7 +25,7 @@ const Authtorization = () => {
         e.preventDefault();
 
         let data = await RequestService.authAcc(login, pass, address);
-        Authtorization(data.login, data.fullName, data.wallet, data.balance, data.role);
+        Authtorization(data.login, data.fullName, data.wallet, data.balance, data.role, data.tempRole);
         
 
         console.log(data);
@@ -60,7 +60,7 @@ const Authtorization = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Адресс</Form.Label>
+                    <Form.Label>Адрес</Form.Label>
                     <Form.Control type="text" value={address} onChange={({ target }) => setAddress(target.value)} />
                 </Form.Group>
                 <Button variant="primary" type="submit">

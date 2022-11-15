@@ -36,20 +36,25 @@ const RiseList = ({ address }) => {
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>Город</th>
-                        <th>Адресс кошелька</th>
-                        <th>многа деняк</th>
+                        <th>Адрес продавца</th>
+                        <th>Адрес магазина</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {List?.map(({ id, seller, shop }, idx) => (
-                        <tr key={idx}>
-                            <th>{id}</th>
-                            <td>{seller}</td>
-                            <td>{shop}</td>
-                        </tr>
 
-                    ))}
+                    {List?.map(
+                        ({ id, seller, shop }, idx) => {
+                            if (id != 0) {
+                                return (
+                                    <tr key={idx}>
+                                        <th>{id}</th>
+                                        <td>{seller}</td>
+                                        <td>{shop}</td>
+                                    </tr>
+                                )
+                            }
+
+                        })}
                 </tbody>
             </Table>
             <form>
@@ -57,8 +62,8 @@ const RiseList = ({ address }) => {
                     <Form.Label>ID пользователя</Form.Label>
                     <Form.Control type="text" value={confirmId} onChange={({ target }) => setId(target.value)} />
                 </Form.Group>
-                <Button variant="success" type="submit" onClick={formAcceptSubmitHandler}>Принять</Button>{' '}
-                <Button variant="danger" type="submit" onClick={formRejectSubmitHandler}>Отклонить</Button>{' '}
+                <Button variant="success" type="submit" onClick={formAcceptSubmitHandler}>Принять</Button>
+                <Button variant="danger" type="submit" onClick={formRejectSubmitHandler}>Отклонить</Button>
             </form>
         </div>
     );

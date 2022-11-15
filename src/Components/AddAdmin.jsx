@@ -21,11 +21,11 @@ const AddAdmin = () =>{
             <h1>Добавление нового администратора</h1>
             <form onSubmit={formAddAdminSubmitHandler}>
                 <Form.Group className="mb-3">
-                    <Form.Label>Адресс нового Админа</Form.Label>
+                    <Form.Label>Адрес нового Админа</Form.Label>
                     <Form.Control type="text" value={newAddress} onChange={({ target }) => setNewAddress(target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                    <Form.Label>Ваш адресс</Form.Label>
+                    <Form.Label>Ваш Адрес</Form.Label>
                     <Form.Control type="text" value={address} onChange={({ target }) => setAddress(target.value)}/>
                 </Form.Group>
 

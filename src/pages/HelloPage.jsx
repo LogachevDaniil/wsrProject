@@ -25,87 +25,66 @@ const HelloPage = () => {
     console.log(sellerData);
     return (
         <div>
-
+            <div>
+                <h1>Привет, {userData._fullName}</h1>
+                <p>
+                    Ваш логин: {userData._login}
+                    <br />
+                    Ваш Адрес: {userData._wallet}
+                    <br />
+                    Ваш баланс: {userData._balance / 10 ** 18} Ether
+                    <RequesRaise />
+                    <ShopTable address={userData._wallet} />
+                </p>
+            </div>
             {
-                (userData._role == 1) ? (
-                    <div>
-                        <h1>Привет, {userData._fullName}</h1>
-                        <p>
-                            Ваш логин: {userData._login}
-                            <br />
-                            Ваш адресс: {userData._wallet}
-                            <br />
-                            Ваш баланс: {userData._balance / 10 ** 18} Ether
-                            <RequesRaise />
-                        </p>
-                    </div>
-                ) : (userData._role == 2) ? (
-                    <div>
-                        <h1>Привет, {userData._fullName}</h1>
-                        <p>
-                            Ваш логин: {userData._login}
-                            <br />
-                            Ваш адресс: {userData._wallet}
-                            <br />
-                            Ваш роль: {roles[userData._role]}
-                            <br />
-                            Ваш баланс: {userData._balance / 10 ** 18} Ether
-                            <br />
-                            Ваш адресс кошелька: {userData._wallet}
-                            <br />
-                            Ваш город: {sellerData._sity}
-                            <br />
-                            Ваш адресс кошелька магазина: {sellerData._shop}
-                            <br />
-                            <br />
-                            Ваш билайн!
-                            Живи на яркой стороне!
-                        </p>
-                    </div>)
+                (userData._role == 1 || userData._tempRole == 1) ? (
+<></>
+                ): (userData._role == 2) ? (
+            <div>
+                <p>
+                    <br />
+                    Ваш роль: {roles[userData._role]}
+                    <br />
+                    Ваш город: {sellerData._sity}
+                    <br />
+                    Ваш Адрес кошелька магазина: {sellerData._shop}
+                    <br />
+                    Ваш билайн!
+                    Живи на яркой стороне!
+                </p>
+            </div>)
 
-                    : (userData._role == 5) ? (
-                        <div>
-                            <h1>Привет, {userData._fullName}</h1>
-                            <p>
-                                Ваш логин: {userData._login}
-                                <br />
-                                Ваш адресс: {userData._wallet}
-                                <br />
-                                Ваша роль: {roles[userData._role]}
-                                <br />
-                                Вош баланс: {userData._balance / 10 ** 18} Ether
-                                <br />
-                                <br />
-                                <AddAdmin />
-                                <RegShop />
-                                <DeleteShop />
-                                <ShopTable address={userData._wallet}/>
-                                <RiseList address={userData._wallet}/>
-                            </p>
-                        </div>)
-                        : (userData._role == 6) ? (
-                            <div>
-                                <h1>Привет магазин, {userData._fullName}</h1>
-                                <p>
-                                    Ваш логин: {userData._login}
-                                    <br />
-                                    Ваш адресс: {userData._wallet}
-                                    <br />
-                                    Ваш роль: {roles[userData._role]}
-                                    <br />
-                                    Ваш баланс: {userData._balance / 10 ** 18} Ether
-                                    <br />
-                                    Ваш билайн!
-                                    Живи на яркой стороне!
-                                    {/* <AddSeller /> */}
-                                </p>
-                            </div>)
+            : (userData._role == 5 && userData._tempRole == 0) ? (
+            <div>
+                <p>
+                    <br />
+                    Ваша роль: {roles[userData._role]}
+                    <br />
+                    <AddAdmin />
+                    <RegShop />
+                    <DeleteShop />
+                    <ShopTable address={userData._wallet} />
+                    <RiseList address={userData._wallet} />
+                </p>
+            </div>)
+            : (userData._role == 6) ? (
+            <div>
+                <h1>Привет магазин, {userData._fullName}</h1>
+                <p>
+                    Ваш роль: {roles[userData._role]}
+                    <br />
+                    Ваш билайн!
+                    Живи на яркой стороне!
+                    {/* <AddSeller /> */}
+                </p>
+            </div>)
 
-                            : (
-                                <div>
-                                    <h1>Войдите в аккаунт</h1>
-                                </div>
-                            )
+            : (
+            <div>
+                <h1>Войдите в аккаунт</h1>
+            </div>
+            )
             }
 
         </div>

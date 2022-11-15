@@ -20,7 +20,7 @@ const DeleteShop = () => {
             <h1>Удалене магазина</h1>
             <form onSubmit={formDeleteShopSubmithandler}>
                 <Form.Group className="mb-3">
-                    <Form.Label>Адресс удаляемого магазина</Form.Label>
+                    <Form.Label>Адрес удаляемого магазина</Form.Label>
                     <Form.Control type="text" value={shopAddress} onChange={({ target }) => setShopAddress(target.value)} />
                 </Form.Group>
                 <Form.Group className="mb-3">

@@ -28,7 +28,7 @@ const RegShop = () =>{
                 <Form.Control type="text" value={shopAddress} onChange={({ target }) => setShopAddress(target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3">
-                <Form.Label>ваш адресс</Form.Label>
+                <Form.Label>ваш Адрес</Form.Label>
                 <Form.Control type="text" value={address} onChange={({ target }) => setAdminAddress(target.value)}/>
             </Form.Group>
 

@@ -3,7 +3,7 @@ import abi from "./abi.json";
 
 class RequestService {
     web3 = new Web3("http://127.0.0.1:8545/");
-    Contract = new this.web3.eth.Contract(abi,"0x5FbDB2315678afecb367f032d93F642f64180aa3"); //адресс контракта
+    Contract = new this.web3.eth.Contract(abi,"0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82"); //адресс контракта
 
     async register(_login, _fullName, _pass, _address){
         try{
@@ -15,12 +15,12 @@ class RequestService {
     }
 
     async authAcc(_login, _pass, _address){
-        // try{
+        try{
             return await this.Contract.methods.authAcc(_login, _pass,).call({ from:_address });
-        // }
-        // catch{
-        //     console.log("auth. error");
-        // }
+         }
+        catch{
+             console.log("auth. error");
+        }
     }
     async sellersDetails(_address){
         // try{
@@ -49,13 +49,14 @@ class RequestService {
     }
 
     
-    async requestRaise(shopAddress, address){
-        return await this.Contract.methods.reqRiseList(shopAddress).send({from:address})
+    async RequesRaise(shopAddress, address){
+        return await this.Contract.methods.requestRaise(shopAddress).send({from:address})
     }
     
     async riseList(address){
         return await this.Contract.methods.riseList().call({from:address})
     }
+
     async addSellers(bool, id, address){
         return await this.Contract.methods.addSellers(bool, id).send({from:address})
     }
@@ -78,5 +79,6 @@ export default new RequestService();
 //     address shop9 = 0x1CBd3b2770909D4e10f157cABC84C7264073C9Ec;
 
 // 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199 для всего
+// 0xdD2FD4581271e230360230F9337D5c0430Bf44C0
 
 // https://github.com/LogachevDaniil/wsrProject.git   

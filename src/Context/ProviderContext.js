@@ -8,7 +8,8 @@ export const ProviderContextWrapper = ({children}) => {
         _login:"",
         _wallet:"",
         _balance:"",
-        _role:""
+        _role:"",
+        _tempRole:""
     }
 
     const initSellerValues = {
@@ -21,13 +22,14 @@ export const ProviderContextWrapper = ({children}) => {
     const [userData, setUserData] = useState(initUserValues);
     const [sellerData, setSellerData] = useState(initSellerValues);
 
-    const Authtorization = (_login, _fullName, _wallet, _balance, _role) => {
+    const Authtorization = (_login, _fullName, _wallet, _balance, _role, _tempRole) => {
         setUserData({
             _login,
             _fullName,
             _wallet,
             _balance,
-            _role
+            _role,
+            _tempRole
         })
     }
     
